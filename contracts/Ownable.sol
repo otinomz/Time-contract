@@ -15,4 +15,23 @@ contract Ownable {
         _;
     }
 
+    function setOwner (address _newOwner) external onlyOwner {
+        // with this only the owner would be able to set the new owner
+
+        require(_newOwner != address(0), "invalid address");
+        owner = _newOwner;
+    }
+
+    // to test the code
+    // we declare a function where onlyOwner can call 
+    // and another where anyOneCancall 
+
+    function onlyOwnerCanCallThisFunc() external onlyOwner {
+        // code goes in here
+    }
+
+
+    function anyOneCanCallThisFunc() external onlyOwner {
+        // code goes in here
+    }
 }
